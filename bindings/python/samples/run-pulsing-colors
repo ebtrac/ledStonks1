@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo python3 pulsing-colors.py --led-gpio-mapping adafruit-hat --led-slowdown-gpio 2 -r 32 --led-cols 64 -c 2 --led-pixel-mapper "U-mapper;Rotate:270"

@@ -1,0 +1,22 @@
+FEATURES
+Need:
+	keyboard/button control - scrolling, brightness, speed, etc
+	
+	DONE - make weather info update every 10 minutes
+		accomplished using cron and bash script
+	DONE - make program run on boot
+		accomplished using dietpi-autostart 
+		MOD - used cron instead
+
+Nice2Have:
+	hourly forecasts screen
+	color coded weather conditions
+	lines and colors
+	graphics
+	transition animations
+
+	DONE - color code the information for better reading
+
+BUGS
+	when data refreshes, it looks like a system crash for a second
+	

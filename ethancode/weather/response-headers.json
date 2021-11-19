@@ -1,0 +1,18 @@
+{
+  "Transfer-Encoding": "chunked",
+  "Connection": "keep-alive",
+  "Vary": "Accept-Encoding",
+  "CDN-PullZone": "93447",
+  "CDN-Uid": "8fa3a04a-75d9-4707-8056-b7b33c8ac7fe",
+  "CDN-RequestCountryCode": "FI",
+  "CDN-EdgeStorageId": "615",
+  "CDN-CachedAt": "2021-07-12 18:26:15",
+  "CDN-RequestPullSuccess": "True",
+  "CDN-RequestPullCode": "200",
+  "CDN-RequestId": "7558a3341f02a036ffa7324943c66503",
+  "CDN-Cache": "MISS",
+  "Cache-Control": "public, max-age=180",
+  "Content-Type": "application/json",
+  "Date": "Mon, 12 Jul 2021 16:26:15 GMT",
+  "Server": "BunnyCDN-FI1-615"
+}

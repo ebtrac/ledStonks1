@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo ./demo --led-gpio-mapping=adafruit-hat --led-slowdown-gpio=2 --led-rows=32 --led-cols=64 --led-limit-refresh=144 --led-chain=2 --led-pixel-mapper="U-mapper" -D 0
