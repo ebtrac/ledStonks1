@@ -3,9 +3,10 @@
 from samplebase import SampleBase
 from rgbmatrix import graphics
 import time
+#import yfinance as yf
 
-
-
+#stocks = 'MSFT'
+#data = yf.download(tickers = stocks, period='1d',interval='1m')
 
 class RunText(SampleBase):
     def __init__(self, *args, **kwargs):
@@ -67,6 +68,10 @@ class RunText(SampleBase):
         self.col_number = 0
         self.offscreen_canvas.Clear()
         self.matrix.SwapOnVSync(self.offscreen_canvas)
+        
+    def graph(self, xvalues, yvalues):
+        #graphics.DrawLine(self.offscreen_canvas, xvalues[i], yvalues[i], xvalues[i+6], yvalues[i+1]
+        pass
 
     def run(self):
         #Init canvas
@@ -93,7 +98,17 @@ class RunText(SampleBase):
                 "black" : [0, 0, 0]
         }
 
-        self.ledprintln("hi world")
+        self.ledprintln("stonks :)")
+        colorstr = "red"
+        _r = self.hue[colorstr][0]
+        _g = self.hue[colorstr][1]
+        _b = self.hue[colorstr][2]
+        color = graphics.Color(_r, _g, _b)
+        graphics.DrawLine(self.offscreen_canvas,0,0, 20, 30, color) 
+        graphics.DrawLine(self.offscreen_canvas,20,30, 40, 10, color) 
+        graphics.DrawLine(self.offscreen_canvas,40,10, 63, 63, color) 
+
+        self.offscreen_canvas = self.matrix.SwapOnVSync(self.offscreen_canvas)
         while True:
             pass
         self.clear_screen()
