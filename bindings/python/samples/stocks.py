@@ -93,10 +93,10 @@ class RunText(SampleBase):
                 "black" : [0, 0, 0]
         }
 
+        self.ledprintln("hi world")
         while True:
-            self.ledprintln("hi world")
-            time.sleep(10)
-            self.clear_screen()
+            pass
+        self.clear_screen()
 
 # Main function
 if __name__ == "__main__":
