@@ -3,10 +3,13 @@
 from samplebase import SampleBase
 from rgbmatrix import graphics
 import time
-#import yfinance as yf
+import yfinance as yf
 
-#stocks = 'MSFT'
-#data = yf.download(tickers = stocks, period='1d',interval='1m')
+class Stocks:
+    def __init__(self):
+        stocks = 'MSFT'
+        data = yf.download(tickers = stocks, period='1d',interval='1m')
+        self.opens = data['Open']
 
 class RunText(SampleBase):
     def __init__(self, *args, **kwargs):
@@ -69,9 +72,13 @@ class RunText(SampleBase):
         self.offscreen_canvas.Clear()
         self.matrix.SwapOnVSync(self.offscreen_canvas)
         
-    def graph(self, xvalues, yvalues):
+    def graph(self, dat, graph_height, graph_width):
+        opens = dat['Open']
+        # scale between 0 and graph_height
+        scl_opens = opens - min(opens)
+        scl_opens = round(scl_opens * graph_height/ max(scl_opens))
         #graphics.DrawLine(self.offscreen_canvas, xvalues[i], yvalues[i], xvalues[i+6], yvalues[i+1]
-        pass
+
 
     def run(self):
         #Init canvas
@@ -104,9 +111,6 @@ class RunText(SampleBase):
         _g = self.hue[colorstr][1]
         _b = self.hue[colorstr][2]
         color = graphics.Color(_r, _g, _b)
-        graphics.DrawLine(self.offscreen_canvas,0,0, 20, 30, color) 
-        graphics.DrawLine(self.offscreen_canvas,20,30, 40, 10, color) 
-        graphics.DrawLine(self.offscreen_canvas,40,10, 63, 63, color) 
 
         self.offscreen_canvas = self.matrix.SwapOnVSync(self.offscreen_canvas)
         while True:
