@@ -4,8 +4,6 @@ stocks = 'MSFT'
 data = yf.download(tickers = stocks, period='1d',interval='1m')
 
 opens = data['Open']
-for price in opens:
-    print(price)
 graph_height = 31
 # scale between 0 and graph_height
 scl_opens = opens - min(opens)
