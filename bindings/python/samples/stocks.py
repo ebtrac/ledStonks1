@@ -130,15 +130,30 @@ class RunText(SampleBase):
                 "black" : [0, 0, 0]
         }
         stockname = "BFS"
-        per = "1h"
+        per = '1d'
         inter = "1m"
+        spac = 0 
         data = yf.download(tickers=stockname,period=per, interval=inter)
-        self.graph(data, 32, 64, 0, 31)
-        self.ledprintln("Open:"+str(round(data.get("Open")[0], 2)), spacing=1)
-        self.ledprintln("Current:"+str(round(data.get("Open")[-1], 2)), spacing=1)
-        self.ledprintln("Max:"+str(round(max(data.get("Open")), 2)), spacing=1)
-        self.ledprintln("Min:"+str(round(min(data.get("Open")), 2)), spacing=1)
-        self.ledprintln(stockname + ' ' + per, spacing=1)
+        tick = yf.Ticker(stockname)
+        curr_price = tick.info.get('currentPrice')
+        prev_close = tick.info.get('previousClose')
+        change_percent = curr_price/prev_close
+        change_money = curr_price - prev_close
+        tick_string = ''
+        if(change_money > 0):
+            tick_string += '+'+str(round(change_money,2))
+            tick_string += ' (+'+str(round((change_percent - 1)*100,2))+'%)'
+        else:
+            tick_string += str(round(change_money,2))
+            tick_string += ' (-'+str(round((1 - change_percent)*100,2))+'%)'
+        self.graph(data, 26, 64, 0, 37)
+        self.ledprintln(stockname+' over '+per, spacing=spac)
+        self.ledprintln(tick_string,spacing=spac)
+        self.ledprintln("Open:$"+str(round(data.get("Open")[0], 2)), spacing=spac)
+        self.ledprintln("Current:$"+str(round(data.get("Open")[-1], 2)), spacing=spac)
+        self.ledprintln("Max:$"+str(round(max(data.get("Open")), 2)), spacing=spac)
+        self.ledprintln("Min:$"+str(round(min(data.get("Open")), 2)), spacing=spac)
+
         self.offscreen_canvas = self.matrix.SwapOnVSync(self.offscreen_canvas)
         time.sleep(60)
         self.clear_screen()

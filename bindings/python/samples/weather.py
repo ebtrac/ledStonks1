@@ -272,6 +272,7 @@ class RunText(SampleBase):
                     self.ledprint(rain + rainunit, color="lightgreen")
             time.sleep(7)
             self.clear_screen()
+        return
 
 # Main function
 if __name__ == "__main__":
